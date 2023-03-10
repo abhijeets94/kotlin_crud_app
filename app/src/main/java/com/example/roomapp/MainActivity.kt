@@ -1,5 +1,6 @@
 package com.example.roomapp
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -119,6 +120,7 @@ class MainActivity : AppCompatActivity() {
         displayStudentList()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun displayStudentList() {
         viewModel.students.observe(this) {
             adapter.setList(it)
@@ -126,13 +128,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun listItemClicked(student: Student) {
-//        Toast.makeText(
-//            this,
-//            "Student name is ${student.name}",
-//            Toast.LENGTH_SHORT
-//        ).show()
-
         selectedStudent = student
         saveButton.text = "Update"
         clearButton.text = "Delete"
